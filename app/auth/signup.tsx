@@ -4,6 +4,7 @@ import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
 import themedStyle, { height, width } from "@/constants/Styles";
 import Fontisto from "@expo/vector-icons/Fontisto";
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   ActivityIndicator,
@@ -15,12 +16,16 @@ import {
 const Signup = () => {
   const theme = useColorScheme() ?? "light";
   const styles = themedStyle(theme);
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [state, setState] = useState<null | "loading" | "error">(null);
   return (
     <ThemedView style={styles.container}>
-      <Image source={require("@/assets/images/logo.jpg")} style={styles.logo} />
+      <Image
+        source={require("@/assets/images/logo.jpg")}
+        style={[styles.logo, { borderColor: Colors[theme].blur }]}
+      />
       <ThemedText style={{ alignSelf: "center", fontWeight: "500" }}>
         Get started with Afrikespace
       </ThemedText>
@@ -82,7 +87,11 @@ const Signup = () => {
           <ThemedText style={styles.longBtnText}>Continue</ThemedText>
         )}
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          router.back();
+        }}
+      >
         <ThemedText
           style={{
             alignSelf: "center",
@@ -94,6 +103,34 @@ const Signup = () => {
           <Text style={{ color: Colors[theme].button }}>Login</Text>
         </ThemedText>
       </TouchableOpacity>
+      {/* Divider */}
+      <ThemedView
+        style={{
+          width: "80%",
+          height: 1,
+          margin: 10,
+          alignSelf: "center",
+          borderColor: Colors[theme].blur,
+          borderStyle: "dashed",
+          borderWidth: 1,
+        }}
+      />
+      {/* Terms and conditions */}
+      <ThemedText
+        style={{
+          alignSelf: "center",
+          padding: 10,
+          fontSize: 14,
+          textAlign: "center",
+          lineHeight: 17,
+        }}
+      >
+        By signing up you agree to our{"\n"}
+        <Text style={{ color: Colors[theme].button, fontWeight: "bold" }}>
+          Terms and Conditions
+        </Text>
+        {"\n"}Of usage
+      </ThemedText>
     </ThemedView>
   );
 };

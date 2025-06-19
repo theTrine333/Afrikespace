@@ -1,5 +1,13 @@
+import { ImageProps, ImageStyle } from "expo-image";
 import { ReactNode } from "react";
-import { KeyboardType, TextStyle, ViewStyle } from "react-native";
+import {
+  DimensionValue,
+  KeyboardType,
+  TextProps,
+  TextStyle,
+  TouchableOpacityProps,
+  ViewStyle,
+} from "react-native";
 type theme = "light" | "dark";
 interface CustomInputProps {
   containerStyle?: ViewStyle;
@@ -21,8 +29,68 @@ interface CustomButtonProps {
   containerStyle?: ViewStyle;
   theme: theme;
   icon: ReactNode;
-  iconStyle?: TextStyle;
+  iconStyle?: ViewStyle;
   action?: any;
 }
 
-export { CustomButtonProps, CustomInputProps };
+interface userLogoProps {
+  image_url: string;
+  height: DimensionValue;
+  width: DimensionValue;
+  borderRadius?: number;
+  containerStyle?: ViewStyle;
+  Children?: any;
+  imageStyle?: ImageStyle;
+  imageProps?: ImageProps;
+  isClickable?: boolean;
+  action?: any;
+}
+
+interface ButtonProps {
+  ButtonProps?: TouchableOpacityProps;
+  containerStyle?: ViewStyle;
+  ButtonStyle?: ViewStyle;
+  Action?: any;
+}
+
+interface OutlineTextBtnProps extends ButtonProps {
+  ButtonText?: string;
+  ButtonTextStyles?: TextStyle;
+  ButtonTextProps?: TextProps;
+}
+
+interface IconTextBtnProps extends ButtonProps {
+  Icon: ReactNode;
+  ButtonText?: string;
+  ButtonTextStyles?: TextStyle;
+  ButtonTextProps?: TextProps;
+}
+
+interface SettingsBtnProps extends ButtonProps {
+  ButtonText?: string;
+  ButtonTextStyles?: TextStyle;
+  ButtonTextProps?: TextProps;
+  LeftIcon?: ReactNode;
+  RightIcon?: ReactNode;
+  isExtendable?: boolean;
+  ChildrenHeight?: number;
+  Children?: ReactNode;
+}
+
+interface DividerProps {
+  height?: DimensionValue;
+  width?: DimensionValue;
+  borderWidth?: number;
+  borderStyle?: "dashed" | "dotted" | "solid";
+  borderColor?: string;
+}
+
+export {
+  CustomButtonProps,
+  CustomInputProps,
+  DividerProps,
+  IconTextBtnProps,
+  OutlineTextBtnProps,
+  SettingsBtnProps,
+  userLogoProps,
+};

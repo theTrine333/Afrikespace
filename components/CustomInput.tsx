@@ -62,6 +62,10 @@ const CustomInput = ({
   );
 };
 
+const SearchBar = ({}) => {
+  return <ThemedView></ThemedView>;
+};
+
 const ORAUTHDIVIDER = ({ theme }: { theme: "dark" | "light" }) => {
   const sharedStyles: ViewStyle = {
     borderWidth: 1,

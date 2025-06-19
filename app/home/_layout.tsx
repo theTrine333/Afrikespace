@@ -1,6 +1,6 @@
 import { Colors } from "@/constants/Colors";
 import themedStyle from "@/constants/Styles";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Image, useColorScheme, View } from "react-native";
@@ -46,13 +46,9 @@ const HomeLayout = () => {
       <Tabs.Screen
         name="search"
         options={{
-          title: "Search",
+          title: "Explore",
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              size={28}
-              name={focused ? "search" : "search-outline"}
-              color={color}
-            />
+            <MaterialIcons size={28} name={"explore"} color={color} />
           ),
         }}
       />
@@ -68,7 +64,7 @@ const HomeLayout = () => {
                 height: 40,
                 width: 40,
                 alignItems: "center",
-                borderRadius: 45 / 2,
+                borderRadius: 100,
                 alignSelf: "center",
                 justifyContent: "center",
                 backgroundColor: Colors[theme].button,
