@@ -10,6 +10,66 @@ const themedStyle = (theme: "light" | "dark") =>
       paddingTop: 40,
       backgroundColor: Colors[theme].background,
     },
+    searchContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      backgroundColor: theme === "light" ? "#f0f0f0" : undefined,
+      borderRadius: 10,
+      paddingHorizontal: 10,
+      height: 40,
+    },
+    searchIcon: {
+      marginRight: 8,
+    },
+    searchInput: {
+      flex: 1,
+      fontSize: 16,
+      color: Colors[theme].text,
+    },
+    clearButton: {
+      padding: 4,
+    },
+    scannerButton: {
+      padding: 4,
+      marginRight: 4,
+    },
+    scannerContainer: {
+      flex: 1,
+      backgroundColor: "#000",
+    },
+    scannerHeader: {
+      flexDirection: "row",
+      alignItems: "center",
+      padding: 16,
+      backgroundColor: "rgba(0,0,0,0.5)",
+    },
+    closeButton: {
+      padding: 8,
+    },
+    scannerTitle: {
+      color: "#fff",
+      fontSize: 18,
+      fontWeight: "600",
+      marginLeft: 16,
+    },
+    scanner: {
+      flex: 1,
+    },
+    scannerOverlay: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(0,0,0,0.5)",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    scanFrame: {
+      width: 250,
+      height: 250,
+      position: "relative",
+    },
     longBtn: {
       alignSelf: "center",
       backgroundColor: "#007fff",

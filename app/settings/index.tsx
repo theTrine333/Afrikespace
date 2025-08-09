@@ -196,7 +196,10 @@ const Index = () => {
         />
         <SettingsBtn
           ButtonText="Sign Out"
-          ButtonTextStyles={{ color: "red" }}
+          Action={() => {
+            router.replace("/auth");
+          }}
+          ButtonTextStyles={{ color: "red", fontWeight: "bold" }}
           LeftIcon={<Ionicons name="log-out-outline" color={"red"} size={25} />}
         />
       </ScrollView>

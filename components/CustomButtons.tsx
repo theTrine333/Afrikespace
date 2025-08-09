@@ -85,7 +85,6 @@ const UserLogoLarge = ({
   containerStyle,
   imageStyle,
 }: userLogoProps) => {
-  const theme = useColorScheme() ?? "light";
   return (
     <ImageBackground
       source={image_url}
@@ -251,7 +250,11 @@ const SettingsBtn = ({
             )}
             <ThemedText
               style={[
-                { textAlign: "center", color: Colors[theme].text },
+                {
+                  textAlign: "center",
+                  fontSize: 14,
+                  color: Colors[theme].text,
+                },
                 { ...ButtonTextStyles },
               ]}
               {...ButtonTextProps}
@@ -265,6 +268,7 @@ const SettingsBtn = ({
               {
                 textAlign: "center",
                 paddingVertical: 5,
+                fontSize: 14,
                 color: Colors[theme].text,
               },
               { ...ButtonTextStyles },

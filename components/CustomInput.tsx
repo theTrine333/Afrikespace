@@ -1,7 +1,14 @@
 import themedStyle from "@/constants/Styles";
-import { CustomInputProps } from "@/constants/types";
+import { CustomInputProps, TextSearchInputProp } from "@/constants/types";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
-import { TextInput, View, ViewStyle } from "react-native";
+import {
+  TextInput,
+  TouchableOpacity,
+  useColorScheme,
+  View,
+  ViewStyle,
+} from "react-native";
 import { ThemedText } from "./ThemedText";
 import { ThemedView } from "./ThemedView";
 
@@ -62,8 +69,103 @@ const CustomInput = ({
   );
 };
 
-const SearchBar = ({}) => {
-  return <ThemedView></ThemedView>;
+const SearchBar = ({
+  placeholderText,
+  setter,
+  isPassField,
+  keyboardType,
+  isBio,
+  isSearch,
+  style,
+}: TextSearchInputProp) => {
+  const theme = useColorScheme() ?? "light";
+  const styles = themedStyle(theme);
+  const [isFocused, setIsFocused] = useState(false);
+  const [passShwon, setPassShwo] = useState(false);
+  const [search, setSearch] = useState("");
+  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+  const [scanned, setScanned] = useState(false);
+  const [showScanner, setShowScanner] = useState(false);
+  return (
+    <>
+      <View style={[styles.searchContainer, style]}>
+        <Ionicons
+          name="search"
+          size={20}
+          color="#666"
+          style={styles.searchIcon}
+        />
+        <TextInput
+          placeholder={placeholderText}
+          onChangeText={(e) => {
+            setSearch(e);
+            setter(e);
+          }}
+          value={search}
+          placeholderTextColor={"grey"}
+          style={styles.searchInput}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        />
+        <TouchableOpacity
+          onPress={() => setShowScanner(true)}
+          style={styles.scannerButton}
+        >
+          <Ionicons name="qr-code" size={20} color="#666" />
+        </TouchableOpacity>
+        {search && (
+          <TouchableOpacity
+            onPress={() => {
+              setter("");
+              setSearch("");
+            }}
+            style={styles.clearButton}
+          >
+            <Ionicons name="close-circle" size={20} color="#666" />
+          </TouchableOpacity>
+        )}
+      </View>
+
+      {/* <Modal
+        visible={showScanner}
+        animationType="slide"
+        onRequestClose={() => setShowScanner(false)}
+      >
+        <View style={styles.scannerContainer}>
+          <View style={styles.scannerHeader}>
+            <TouchableOpacity
+              onPress={() => setShowScanner(false)}
+              style={styles.closeButton}
+            >
+              <Ionicons name="close" size={24} color="#fff" />
+            </TouchableOpacity>
+            <Text style={styles.scannerTitle}>Scan QR Code</Text>
+          </View>
+          <BarCodeScanner
+            onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+            style={styles.scanner}
+            barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
+          />
+          <View style={styles.scannerOverlay}>
+            <View style={styles.scanFrame}>
+              <View style={[styles.corner, styles.cornerTopLeft]} />
+              <View style={[styles.corner, styles.cornerTopRight]} />
+              <View style={[styles.corner, styles.cornerBottomLeft]} />
+              <View style={[styles.corner, styles.cornerBottomRight]} />
+            </View>
+          </View>
+          {scanned && (
+            <TouchableOpacity
+              style={styles.scanAgainButton}
+              onPress={() => setScanned(false)}
+            >
+              <Text style={styles.scanAgainText}>Tap to Scan Again</Text>
+            </TouchableOpacity>
+          )}
+        </View>
+      </Modal> */}
+    </>
+  );
 };
 
 const ORAUTHDIVIDER = ({ theme }: { theme: "dark" | "light" }) => {
@@ -94,4 +196,4 @@ const ORAUTHDIVIDER = ({ theme }: { theme: "dark" | "light" }) => {
     </ThemedView>
   );
 };
-export { CustomInput, ORAUTHDIVIDER };
+export { CustomInput, ORAUTHDIVIDER, SearchBar };

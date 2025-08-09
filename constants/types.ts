@@ -66,6 +66,22 @@ interface IconTextBtnProps extends ButtonProps {
   ButtonTextProps?: TextProps;
 }
 
+export interface TextSearchInputProp {
+  isPassField?: boolean;
+  isBio?: boolean;
+  isSearch?: boolean;
+  setter: any;
+  placeholderText: string;
+  keyboardType?:
+    | "default"
+    | "number-pad"
+    | "decimal-pad"
+    | "numeric"
+    | "email-address"
+    | "phone-pad"
+    | "url";
+  style?: ViewStyle;
+}
 interface SettingsBtnProps extends ButtonProps {
   ButtonText?: string;
   ButtonTextStyles?: TextStyle;
