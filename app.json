@@ -11,6 +11,7 @@
     "ios": {
       "supportsTablet": true
     },
+    "github_url": "https://github.com/Afrikspace/mobile.git",
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
